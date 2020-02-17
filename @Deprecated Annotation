@@ -1,0 +1,14 @@
+@Deprecated annotation was introduced in java 5 version.
+ A program element annotated with @Deprecated means it should not be used for any of the following reasons
+
+	1.Its usage may leads to errors.
+	2.It may be incompatible in future version.
+	3.It may be removed in future version.
+	4.A better and efficient alternative has superseded it.
+
+Compiler generates warnings whenever a deprecated element is used. With Java 9, 
+two new enhancements are made to @Deprecated annotation.
+
+	1.forRemoval − Indicates whether the annotated element is subject to removal in a future version. The default value is false.
+
+	2.since − Returns the version in which the annotated element became deprecated. The default value is the empty string.

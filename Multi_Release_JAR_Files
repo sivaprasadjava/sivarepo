@@ -1,0 +1,34 @@
+Multi Java Version Module JAR Files
+-----------------------------------
+	From Java 9 it is possible to create JAR files for Java modules which contains code compiled specifically for different versions of Java.
+ That means, that you can create a JAR file for your module that contains code compiled for Java 8, Java 9, Java 10 etc. all within
+the same JAR file.
+
+Here is how the structure looks of a multi Java version JAR file:
+
+
+ jar root
+  - A.class
+  - B.class
+  - C.class
+  - D.class
+  - META-INF
+     - versions
+        - 9
+           - A.class
+           - B.class
+        - 10
+           - A.class
+ 			
+		The com folder at the root level of the JAR file contains the compiled Java classes for pre Java 9 versions.Earlier versions
+of Java do not understand multi Java version JAR files so they use the classes found here.Therefore you can only support one Java 
+version earlier than Java 9.
+
+ The META-INF directory contains the MANIFEST.MF file and a directory named versions.
+ The MANIFEST.MF file needs a special entry that marks the JAR file as a multi version JAR file. Here is how this entry looks:
+
+		Multi-Release: true
+
+					The versions directory which can contain the compiled classes for different versions of Java for your module. 
+In the example above there are two subdirectories inside the versions directory. One subdirectory for Java 9, and one for Java 10.
+The names of the directories correspond to the numbers of the Java versions to support.
